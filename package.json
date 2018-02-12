@@ -14,8 +14,11 @@
   "homepage": "https://github.com/praneeth-m/react-starter-kit#readme",
   "main": "index.js",
   "scripts": {
-    "startws": "node build/server.js",
-    "security-check": "nsp check --preprocessor yarn --reporter table"
+    "start": "npm-run-all --parallel security-check open:src lint:watch",
+    "open:src": "babel-node build/server.js",
+    "security-check": "nsp check",
+    "lint": "esw webpack.config.* src build --color",
+    "lint:watch": "npm run lint -- --watch"
   },
   "dependencies": {
     "whatwg-fetch": "1.0.0"
@@ -32,9 +35,12 @@
     "compression": "1.6.2",
     "cross-env": "3.1.3",
     "css-loader": "0.25.0",
-    "eslint": "3.8.1",
-    "eslint-plugin-import": "2.0.1",
-    "eslint-watch": "2.1.14",
+    "eslint": "^4.17.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.6.1",
+    "eslint-watch": "3.1.3",
     "express": "4.14.0",
     "extract-text-webpack-plugin": "1.0.1",
     "html-webpack-plugin": "2.22.0",
